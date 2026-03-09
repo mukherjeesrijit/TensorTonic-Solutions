@@ -24,7 +24,11 @@ def roi_pool(feature_map, rois, output_size):
             w_s = int(x1 + np.floor(j*roi_w/output_size))
             w_e = int(x1 + np.floor((j+1)*roi_w/output_size))
             if w_e == w_s: w_e = w_s + 1
-            output[i,j] = np.max(feature_map[h_s:h_e,w_s:w_e])
+            bin_slice = feature_map[h_s:h_e, w_s:w_e]
+            if bin_slice.size > 0:
+                output[i, j] = np.max(bin_slice)
+            else:
+                output[i, j] = 0 # Or another default value
         all_results.append(output.tolist())
     return all_results
 
