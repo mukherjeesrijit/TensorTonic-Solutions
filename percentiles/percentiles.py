@@ -14,7 +14,7 @@ def percentiles(x, q):
     min_id = np.clip(min_id, 0, n-2)
     alpha =  virtual_id - min_id
     result = (1-alpha)*x[min_id] + (alpha)*x[min_id+1]
-    print(result)
+    # result = np.percentile(x, q, method='linear')
 
     return result
     
