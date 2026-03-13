@@ -26,11 +26,11 @@ def train_logistic_regression(X, y, lr=0.1, steps=1000):
         # print(X.T.shape)
         # print(err.shape)
         return 2/n * X.T @ err
-
+ 
     def grad_b(X,w,b,ones):
         n = X.shape[0]
         err = error(X,w,b,ones)
-        return 2/n *np.sum(err)
+        return 1/n * np.sum(err)
 
     for _ in range(steps):
         # print(w.shape)
